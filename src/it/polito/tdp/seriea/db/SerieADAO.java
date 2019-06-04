@@ -80,9 +80,9 @@ public class SerieADAO {
 	
 	public List<Match> listMatchesForTeam(Team squadra, Map<Integer, Season> stagioniIdMap, Map<String, Team> squadreIdMap) {
 		
-		String sql = "SELECT match_id, season, 'div', 'date', hometeam, awayteam, fthg, ftag, ftr " + 
+		String sql = "SELECT match_id, season, 'div', date, hometeam, awayteam, fthg, ftag, ftr " + 
 				     "FROM matches " + 
-				     "WHERE HomeTeam=? AND AwayTeam=?";
+				     "WHERE HomeTeam=? OR AwayTeam=?";
 		
 		List<Match> result = new ArrayList<>();
 		Connection conn = DBConnect.getConnection();

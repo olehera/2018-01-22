@@ -1,6 +1,9 @@
 package it.polito.tdp.seriea;
 
 import java.net.URL;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -19,6 +22,7 @@ public class SerieAController {
 	
 	public void setModel(Model model) {
 		this.model = model;
+		boxSquadra.getItems().clear();
 		boxSquadra.getItems().addAll(model.getTeams());
 	}
 
@@ -53,10 +57,12 @@ public class SerieAController {
     	}
     	
     	Map<Season, Integer> punteggi = model.punteggi(scelto);
+    	List<Season> seasons = new LinkedList<>(punteggi.keySet());
+    	Collections.sort(seasons);
     	
     	txtResult.clear();
-    	for (Season s: punteggi.keySet()) 
-    		txtResult.appendText(s.getSeason()+" "+punteggi.get(s));
+    	for (Season s: seasons) 
+    		txtResult.appendText(s.getSeason()+" -> "+punteggi.get(s)+"\n");
     }
 
     @FXML

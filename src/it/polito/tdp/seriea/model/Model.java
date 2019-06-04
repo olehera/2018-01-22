@@ -50,7 +50,7 @@ public class Model {
 			
 			int punti = 0;
 			
-			if ( m.getFtr() == "D" ) {
+			if ( m.getFtr().equals("D") ) {
 				punti = 1;
 			} else if ( m.getHomeTeam().equals(squadra) && m.getFtr().equals("H") ||
 					    m.getAwayTeam().equals(squadra) && m.getFtr().equals("A") ) {
