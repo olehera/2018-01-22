@@ -67,12 +67,21 @@ public class SerieAController {
 
     @FXML
     void doTrovaAnnataOro(ActionEvent event) {
+    	
+    	Season annata = model.calcolaAnnataDOro();
+    	int diff = model.diffPesi();
+    	
+    	txtResult.appendText("\nAnnata d'Oro: "+annata.getSeason()+"\nDifferenza dei pesi: "+diff);
 
     }
 
     @FXML
     void doTrovaCamminoVirtuoso(ActionEvent event) {
-
+    	Map<Season, Integer> p = model.getPunteggi();
+    	
+    	txtResult.appendText("\n\nCammino Virtuoso:\n");
+    	for (Season s: model.camminoVirtuoso())
+    		txtResult.appendText(s.getSeason()+" -> "+p.get(s)+"\n");
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
